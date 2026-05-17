@@ -14,11 +14,13 @@ function log_error() {
 }
 
 function detect_client_info() {
-  CLIENT_PLATFORM="${SCP_CLIENT_OS:-$(uname -s | tr '[:upper:]' '[:lower:]')}"
+  CLIENT_PLATFORM="$(echo ${SCP_CLIENT_OS:-$(uname -s)} | tr '[:upper:]' '[:lower:]')"
   CLIENT_ARCH="${SCP_CLIENT_ARCH:-$(uname -m)}"
-
+  CLIENT_SUFFIX="${SCP_CLIENT_SUFFIX:-""}"
+  
   case "${CLIENT_PLATFORM}" in
-  darwin | linux | windows) ;;
+  darwin | linux) ;;
+  windows) CLIENT_SUFFIX=".exe" ;;
   *) log_error "Unknown or unsupported platform: ${CLIENT_PLATFORM}. Supported platforms are Linux, Darwin, and Windows." 2 ;;
   esac
 
@@ -31,7 +33,7 @@ function detect_client_info() {
 
 detect_client_info
 DOWNLOAD_URL_PREFIX="${DRONE_SCP_RELEASE_URL}/v${DRONE_SCP_VERSION}"
-CLIENT_BINARY="drone-scp-${DRONE_SCP_VERSION}-${CLIENT_PLATFORM}-${CLIENT_ARCH}"
+CLIENT_BINARY="drone-scp-${DRONE_SCP_VERSION}-${CLIENT_PLATFORM}-${CLIENT_ARCH}${CLIENT_SUFFIX}"
 TARGET="${GITHUB_ACTION_PATH}/${CLIENT_BINARY}"
 echo "Downloading ${CLIENT_BINARY} from ${DOWNLOAD_URL_PREFIX}"
 INSECURE_OPTION=""
