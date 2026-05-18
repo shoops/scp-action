@@ -1,6 +1,6 @@
-name: "SCP Command to Transfer Files"
-description: "Easily transfer files and folders using the SCP command in Linux."
-author: "Bo-Yi Wu"
+name: "SCP File or Directory Transfer to Remote"
+description: "Easily transfer files and folders to a remote host using the SCP."
+author: "Bo-Yi Wu (with fixes from Stefan Hoops)"
 inputs:
   host:
     description: "Remote host address for SCP (e.g., example.com or 192.168.1.1)."
@@ -139,4 +139,4 @@ runs:
 
 branding:
   icon: "copy"
-  color: "gray-dark"
+  color: "purple"
