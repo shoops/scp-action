@@ -1,5 +1,7 @@
 # 🚀 SCP for GitHub Actions
 
+> **Note:** This is only a minor fix of [appleboy/scp-action](https://github.com/appleboy/scp-action).
+
 [繁體中文](README.zh-tw.md) | [简体中文](README.zh-cn.md)
 
 [GitHub Action](https://github.com/features/actions) for copying files and artifacts via SSH.
@@ -63,7 +65,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Copy files via SSH
-        uses: appleboy/scp-action@v1
+        uses: shoops/scp-action@v-1.0.1
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
@@ -172,7 +174,7 @@ jobs:
 
 ```yaml
 - name: Copy file via SSH password
-  uses: appleboy/scp-action@v1
+  uses: shoops/scp-action@v-1.0.1
   with:
     host: example.com
     username: foo
@@ -186,7 +188,7 @@ jobs:
 
 ```yaml
 - name: Copy to multiple servers
-  uses: appleboy/scp-action@v1
+  uses: shoops/scp-action@v-1.0.1
   with:
     host: "foo.com,bar.com"
     username: foo
@@ -207,7 +209,7 @@ jobs:
     separator: ","
 
 - name: Copy changed files to server
-  uses: appleboy/scp-action@v1
+  uses: shoops/scp-action@v-1.0.1
   with:
     host: ${{ secrets.HOST }}
     username: ${{ secrets.USERNAME }}
@@ -231,7 +233,7 @@ jobs:
     path: distfiles
 
 - name: Copy artifact to server
-  uses: appleboy/scp-action@v1
+  uses: shoops/scp-action@v-1.0.1
   with:
     host: ${{ secrets.HOST }}
     username: ${{ secrets.USERNAME }}
@@ -245,7 +247,7 @@ jobs:
 
 ```yaml
 - name: Copy to Windows
-  uses: appleboy/scp-action@v1
+  uses: shoops/scp-action@v-1.0.1
   with:
     host: ${{ secrets.HOST }}
     username: ${{ secrets.USERNAME }}
